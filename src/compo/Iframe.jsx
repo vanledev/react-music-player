@@ -1,13 +1,8 @@
-import QuickPlay from "./QuickPlay";
-import SongLineInList from "./SongLine";
 import "../assets/script/iframe-api";
 import React, { useState, useEffect, useRef } from "react";
-import Shuffle from "./ShuffleButton";
-import PlayButton from "./PlayButton";
-import { changeCurrentSongList, setProgressPercent } from "../redux/slice";
-import { Routes, Route, Link } from "react-router-dom";
-
 import {
+  changeCurrentSongList,
+  setProgressPercent,
   changeSongNowPlaying,
   changeReduxPlayerState,
   toggleShuffle,
@@ -20,8 +15,6 @@ import {
   toggleRepeat,
 } from "../redux/slice";
 import { useStore, useDispatch, useSelector } from "react-redux";
-import NextButton from "./NextButton";
-import getYoutubeVideoTitle from "../assets/script/youtube-data-api";
 
 function Iframe() {
   const { getState } = useStore();
@@ -50,7 +43,6 @@ function Iframe() {
       window.player.cueVideoById({
         videoId: songNowPlaying.id,
       });
-
     }
   }, [songNowPlaying]);
 
@@ -59,19 +51,28 @@ function Iframe() {
       if (isRepeatOne) {
         window.player.playVideo();
       } else {
-        if (currentSongIndex == currentSongsList.length - 1) {
+        if (
+          getState().playlist.currentSongIndex ==
+          getState().playlist.currentSongsList.length - 1
+        ) {
           dispatch(setCurrentSongIndex(0));
         } else {
-          dispatch(setCurrentSongIndex(currentSongIndex + 1));
+          dispatch(
+            setCurrentSongIndex(getState().playlist.currentSongIndex + 1)
+          );
         }
-        dispatch(changeSongNowPlaying(currentSongsList[currentSongIndex]));
+
+        dispatch(
+          changeSongNowPlaying(
+            getState().playlist.currentSongsList[
+              getState().playlist.currentSongIndex
+            ]
+          )
+        );
       }
     }
-
-
-
-    if (playerState == 5){
-      window.player.playVideo()
+    if (playerState == 5) {
+      window.player.playVideo();
     }
   }, [playerState]);
 
