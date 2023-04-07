@@ -39,7 +39,7 @@ function ProgressBar() {
         min="0"
         max="100"
         step="1"
-        value={getState().playlist.progressPercent}
+        value={useSelector((state) => state.playlist.progressPercent)}
         onChange={(e) => {
           dispatch(setProgressPercent(e.target.value));
           if (window.player) {
