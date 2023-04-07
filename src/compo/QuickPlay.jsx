@@ -22,11 +22,7 @@ import NextButton from "./NextButton";
 import ProgressBar from "./ProgressBar";
 
 function QuickPlay() {
-
-  
-      const songNowPlaying = useSelector(
-        (state) => state.playlist.songNowPlaying
-      );
+  const songNowPlaying = useSelector((state) => state.playlist.songNowPlaying);
   return (
     <section className="">
       <div className="w-full p-0 ">
@@ -36,17 +32,16 @@ function QuickPlay() {
           </div>
 
           <div className="px-5 pb-5 my-auto flex bg-dark justify-between">
-            <Link to="/single">
-              <div>
-                <p className="font-bold text-[13px]">
-                  {songNowPlaying.name}
-                </p>
+            <div class="grow">
+              <Link to="/single">
+                <p className="font-bold text-[13px]">{songNowPlaying.name}</p>
                 <p className="text-gray-300 text-[11px] ">
                   {songNowPlaying.artist}
                 </p>
-              </div>
-            </Link>
-            <div className="my-auto text-2xl">
+              </Link>
+            </div>
+
+            <div className="z-10 my-auto text-2xl">
               <PrevButton />
               <PlayButton />
               <NextButton />

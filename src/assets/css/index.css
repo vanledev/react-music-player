@@ -11593,3 +11593,9 @@ readers do not read off random characters that represent icons */
 #player-div{
   display:none
 }
+.z-10{
+  z-index:10
+}
+.grow{
+  flex-grow: 1;
+}
