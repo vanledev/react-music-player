@@ -32,7 +32,7 @@ function QuickPlay() {
           </div>
 
           <div className="px-5 pb-5 my-auto flex bg-dark justify-between">
-            <div class="grow">
+            <div className="grow">
               <Link to="/single">
                 <p className="font-bold text-[13px]">{songNowPlaying.name}</p>
                 <p className="text-gray-300 text-[11px] ">
