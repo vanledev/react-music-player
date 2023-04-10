@@ -1,5 +1,6 @@
 {
   "name": "mp3-youtube",
+  "homepage": "https://vanledev.github.io/react-music-player/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
